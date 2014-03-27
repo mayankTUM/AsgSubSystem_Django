@@ -1,0 +1,31 @@
+body {
+	padding-top: 50px;
+}
+
+.starter-template {
+	padding: 40px 15px;
+	text-align: center;
+}
+
+.unpwd {
+	margin-bottom: 20px;
+	font-size: 16px;
+	font-weight: 200;
+	line-height: 1.4;
+}
+
+.details-template {
+	padding: 40px 15px;
+	text-align: left;
+}
+
+.detailsTable  td {
+	padding : 15px;
+}
+
+
+.assignTable td,
+.assignTable th {
+	padding : 15px;
+}
+

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="lib" path="D:/TUM/SemesterIII/djangoHiWi/apache-ldap-api-1.0.0-M20-bin/apache-ldap-api-1.0.0-M20-bin/lib/antlr-2.7.7.jar"/>
+	<classpathentry kind="lib" path="D:/TUM/SemesterIII/djangoHiWi/apache-ldap-api-1.0.0-M20-bin/apache-ldap-api-1.0.0-M20-bin/lib/api-all-1.0.0-M20.jar"/>
+	<classpathentry kind="lib" path="D:/TUM/SemesterIII/djangoHiWi/apache-ldap-api-1.0.0-M20-bin/apache-ldap-api-1.0.0-M20-bin/lib/commons-collections-3.2.1.jar"/>
+	<classpathentry kind="lib" path="D:/TUM/SemesterIII/djangoHiWi/apache-ldap-api-1.0.0-M20-bin/apache-ldap-api-1.0.0-M20-bin/lib/commons-io-2.4.jar"/>
+	<classpathentry kind="lib" path="D:/TUM/SemesterIII/djangoHiWi/apache-ldap-api-1.0.0-M20-bin/apache-ldap-api-1.0.0-M20-bin/lib/commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="D:/TUM/SemesterIII/djangoHiWi/apache-ldap-api-1.0.0-M20-bin/apache-ldap-api-1.0.0-M20-bin/lib/commons-pool-1.6.jar"/>
+	<classpathentry kind="lib" path="D:/TUM/SemesterIII/djangoHiWi/apache-ldap-api-1.0.0-M20-bin/apache-ldap-api-1.0.0-M20-bin/lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="D:/TUM/SemesterIII/djangoHiWi/apache-ldap-api-1.0.0-M20-bin/apache-ldap-api-1.0.0-M20-bin/lib/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="D:/TUM/SemesterIII/djangoHiWi/apache-ldap-api-1.0.0-M20-bin/apache-ldap-api-1.0.0-M20-bin/lib/mina-core-2.0.7.jar"/>
+	<classpathentry kind="lib" path="D:/TUM/SemesterIII/djangoHiWi/apache-ldap-api-1.0.0-M20-bin/apache-ldap-api-1.0.0-M20-bin/lib/slf4j-api-1.7.5.jar"/>
+	<classpathentry kind="lib" path="D:/TUM/SemesterIII/djangoHiWi/apache-ldap-api-1.0.0-M20-bin/apache-ldap-api-1.0.0-M20-bin/lib/slf4j-log4j12-1.7.5.jar"/>
+	<classpathentry kind="lib" path="D:/TUM/SemesterIII/djangoHiWi/apache-ldap-api-1.0.0-M20-bin/apache-ldap-api-1.0.0-M20-bin/lib/xml-apis-2.0.2.jar"/>
+	<classpathentry kind="lib" path="D:/TUM/SemesterIII/djangoHiWi/apache-ldap-api-1.0.0-M20-bin/apache-ldap-api-1.0.0-M20-bin/lib/xpp3-1.1.4c.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Mayank/Downloads/sun-jndi-ldap.jar/sun-jndi-ldap.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

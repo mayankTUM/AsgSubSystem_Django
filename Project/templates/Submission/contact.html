@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
+<title>Parallel Programming Tutorial</title>
+
+<!-- Bootstrap core CSS -->
+<link href="{{ STATIC_URL }}bootstrap-3.0.3-dist/dist/css/bootstrap.css"
+	rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="{{ STATIC_URL }}css/starter-template.css" rel="stylesheet">
+
+<!-- Just for debugging purposes. Don't actually copy this line! -->
+<!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+	      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+	    <![endif]-->
+
+<script type="text/javascript">
+	function checkEmpty()
+	{
+		var x=document.forms["login"]["username"].value;
+		var y=document.forms["login"]["password"].value;
+		if(x==null || x =="" || y==null || y =="" )
+		{
+			alert("Username or password cannot be empty !!");
+			return false;
+		}
+	}
+	</script>
+
+</head>
+
+<body>
+
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Parallel Programming</a>
+			</div>
+			<div class="collapse navbar-collapse">
+				{% if studentUserName == "" %}
+				<ul class="nav navbar-nav">
+					<li><a href="/Submission">Login</a></li>
+					<li><a href="/Submission/about">About</a></li>
+					<li class="active"><a href="/Submission/contact">Contact</a></li>
+				</ul>
+				{% else %}
+				<ul class="nav navbar-nav">
+					<li><a href="/Submission/home">Home</a></li>
+					{% if noOfStudentsPerGroup > 1 %}
+					<li class="dropdown"><a href="#" data-toggle="dropdown"
+						class="dropdown-toggle">Groups <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="/Submission/createGroup">Create a new group</a></li>
+							<li><a href="/Submission/showGroup">Join a group</a></li>
+							<li><a href="/Submission/leaveGroup">Leave a group</a></li>
+							<li><a href="/Submission/aboutMyGroup">About my group</a></li>
+						</ul></li>
+						{% endif %}
+				    <li><a href="/Submission/assignments">Assignments</a></li>
+					<li class="active"><a href="/Submission/contact">Contact</a></li>
+				</ul>
+				<p align="right"><font color = "white">Welcome {{studentUserName}}</font>, <a href="/Submission/logout">Logout</a></p>
+				{% endif %}
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="starter-template">
+			<h3>Contact</h3>
+			<b>Andreas Hollmann, M. Sc.</b><br>
+			Technische Universität München<br>
+			Fakultät für Informatik, LRR (I10)<br>
+			Boltzmannstraße 3<br>
+			D-85748 Garching bei München<br><br>
+			Email:    hollmann@in.tum.de<br>
+			Phone:  +49 (0)89 289-17699<br>
+			Fax:      +49 (0)89 289-17662<br>
+			Room:   MI 01.04.055<br>
+		</div>
+	</div>
+	<!-- /.container -->
+
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script
+		src="{{ STATIC_URL }}bootstrap-3.0.3-dist/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

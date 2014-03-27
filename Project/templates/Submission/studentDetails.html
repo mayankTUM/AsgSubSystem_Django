@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
+<title>Parallel Programming Tutorial</title>
+
+<!-- Bootstrap core CSS -->
+<link href="{{ STATIC_URL }}bootstrap-3.0.3-dist/dist/css/bootstrap.css"
+	rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="{{ STATIC_URL }}css/starter-template.css" rel="stylesheet">
+
+<!-- Just for debugging purposes. Don't actually copy this line! -->
+<!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    
+ <script type="text/javascript">
+	function checkEmpty()
+	{
+		var a=document.forms["studentDetails"]["matrikel"].value;
+		var b=document.forms["studentDetails"]["fisrtname"].value;
+		var c=document.forms["studentDetails"]["lastname"].value;
+		var d=document.forms["studentDetails"]["emailid"].value;
+		if(a==null || a =="" || b==null || b =="" ||c==null || c =="" || d==null || d =="")
+		{
+			alert("All fields are mandatory !!");
+			return false;
+		}
+	}
+ </script>
+    
+</head>
+
+<body>
+
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Parallel Programming</a>
+			</div>
+			<div class="collapse navbar-collapse">
+				 <p align="right"><font color = "white">Welcome {{studentUserName}}</font>, <a href="/Submission/logout">Logout</a></p>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</div>
+    
+   
+	<div class="container">
+
+		<div class="details-template">
+			<h2>Please enter your details</h2>
+			<form action="/Submission/updateStudentDetails" method="post" name="studentDetails" onsubmit="return checkEmpty()">
+				{% csrf_token %}
+				<table class="detailsTable " >
+					<tr>
+						<td><label class="Lead"> Matrikel Nr : </label></td>
+						<td><input type="text" name="matrikel" value="{{studentMatrik}}" /></td>
+					</tr>
+					<tr>
+						<td><label class="Lead"> First Name : </label></td>
+						<td><input type="text" name="fisrtname" value="{{studentFirstName}}" /></td>
+					</tr>
+					<tr>
+						<td><label class="Lead"> Last Name : </label></td>
+						<td><input type="text" name="lastname" value="{{studentLastName}}" /></td>
+					</tr>
+					<tr>
+						<td><label class="Lead"> Email Id : </label></td>
+						<td><input type="email" name="emailid" value="{{studentEmail}}" /></td>
+					</tr>
+					<tr>
+						<td colspan="2"><input type="submit" value="Confirm" /></td>
+					</tr>
+				</table>
+
+			</form>
+
+		</div>
+
+
+	</div>
+	<!-- /.container -->
+
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script
+		src="{{ STATIC_URL }}bootstrap-3.0.3-dist/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

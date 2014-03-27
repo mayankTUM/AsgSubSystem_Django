@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
+<title>Parallel Programming Tutorial</title>
+
+<!-- Bootstrap core CSS -->
+<link href="{{ STATIC_URL }}bootstrap-3.0.3-dist/dist/css/bootstrap.css"
+	rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="{{ STATIC_URL }}css/starter-template.css" rel="stylesheet">
+
+<!-- Just for debugging purposes. Don't actually copy this line! -->
+<!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+<script type="text/javascript"
+		src="https://code.jquery.com/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="{{ STATIC_URL }}bootstrap-3.0.3-dist/dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('.dropdown-toggle').dropdown();
+		});
+	</script>    
+<script>
+$(document).ready(function(){
+
+	var _validFileExtensions = [".c"];
+   	$('#submitButton').on('click', function(){
+		if($('#deadlinePassed').val() == "True")
+		  {
+			   $('#deadlinePassedText').text("The deadline has already passed. You cannot submit the assignment any more !!");
+			   return false;
+		  }
+		  else
+		  {
+			  var oForm = document.getElementById("asgSub");
+	          if(Validate(oForm,_validFileExtensions))		  
+			  	$('#asgSub').submit();
+		  }  	
+	});
+	$('#downloadResults').click(function(e){
+		e.preventDefault();
+		window.open($('#resultFile').val());
+	});
+});
+
+// function to check the file extention
+
+	function Validate(oForm,_validFileExtensions) {
+	    var arrInputs = oForm.getElementsByTagName("input");
+	    for (var i = 0; i < arrInputs.length; i++) {
+	        var oInput = arrInputs[i];
+	        if (oInput.type == "file") {
+	            var sFileName = oInput.value;
+	            if (sFileName.length > 0) {
+	                var blnValid = false;
+	                for (var j = 0; j < _validFileExtensions.length; j++) {
+	                    var sCurExtension = _validFileExtensions[j];
+	                    if (sFileName.substr(sFileName.length - sCurExtension.length, sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) {
+	                        blnValid = true;
+	                        break;
+	                    }
+	                }
+
+	                if (!blnValid) {
+	                    alert("Please submit files with '.c' extention only");
+	                    return false;
+	                }
+	            }
+	        }
+	    }
+
+	    return true;
+	}
+
+</script>    
+</head>
+
+<body>
+
+
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Parallel Programming</a>
+			</div>
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="/Submission/home">Home</a></li>
+					{% if noOfStudentsPerGroup > 1 %}
+					<li class="dropdown"><a href="#" data-toggle="dropdown"
+						class="dropdown-toggle">Groups <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="/Submission/createGroup">Create a new group</a></li>
+							<li><a href="/Submission/showGroup">Join a group</a></li>
+							<li><a href="/Submission/leaveGroup">Leave a group</a></li>
+							<li><a href="/Submission/aboutMyGroup">About my group</a></li>
+						</ul></li>
+						{% endif %}
+				    <li class="active"><a href="/Submission/assignments">Assignments</a></li>
+					<li><a href="/Submission/contact">Contact</a></li>
+				</ul>
+				<p align="right"><font color = "white">Welcome {{studentUserName}}</font>, <a href="/Submission/logout">Logout</a></p>
+		
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</div>
+    <br>
+	<div class="container">
+	    
+		<div>
+		<form id="asgSub" action="/Submission/submission?q={{assignmentID}}" method="post" name="submission" enctype="multipart/form-data">
+		{% csrf_token %}
+			This is assignment 1. This is assignment 1. This is assignment 1. This is assignment 1. This is assignment 1. This is assignment 1. This is assignment 1.
+			 This is assignment 1. This is assignment 1. This is assignment 1. This is assignment 1. This is assignment 1. This is assignment 1.
+			  This is assignment 1. This is assignment 1. This is assignment 1. This is assignment 1. This is assignment 1. This is assignment 1. <br><br>
+			<table>
+			<tr><td><input type = "file" name = "file" id="file" /></td></tr>
+			<tr><td><input type = "hidden" id = "deadlinePassed" value = "{{deadlinePassed}}"/></td></tr>
+			<tr><td><input type = "hidden" id = "resultFile" value = "{{resultFile}}"/></td></tr>
+			<tr><td><input type = "button" id = "submitButton" value = "Submit" /></td></tr>
+			
+			<tr><td id ="deadlinePassedText" style="color:red;"></td></tr>
+			</table>
+			<br>
+			{% if submitted %}
+			<table  id = "submissionDetails" class="table table-hover">
+			<tr><th>Assignment Name</th><th>Submitted By</th><th>Date Of Submission</th><th>Status</th><th>Download Result File</th></tr>
+			<tr><td>{{assignmentName}}</td><td>{{submittedBy}}</td><td>{{time}}</td><td>{% if score == "Accepted" %}<img src = "/media/images/green_tick.jpg" width="20px" height="20px"/>{% else %}<img src = "/media/images/red-cross.png" width="15px" height="15px"/>{% endif %}  {{score}}</td><td><a download = "result.txt" href="{{resultFile}}">Download Files</a></td><tr>
+			</table>
+			{% endif %}
+			<p id = "deadlineError"> </p>
+			{% if warnings != "False" %}
+			<p style = "color:red;size:2px;"> Your code is not accepted. It either contains some warnings/errors or it fails the test cases. Please correct the code and submit again</p>
+			{% endif %}
+		</form>
+		</div>
+	</div>
+	<!-- /.container -->
+
+</body>
+</html>

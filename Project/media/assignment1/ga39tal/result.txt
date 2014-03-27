@@ -1,0 +1,2 @@
+pthread_datadep_inc.c: In function 'getValue':
+pthread_datadep_inc.c:30:7: warning: unused variable 'a' [-Wunused-variable]
