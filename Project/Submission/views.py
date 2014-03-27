@@ -322,7 +322,7 @@ def compileFile(directory,fileName,assignment):
         cmd = ['gcc','-std=gnu99','-pthread','-Wall','-o',str(outputName+'.o'),str(fileName),"main.c"]
         process = subprocess.Popen(cmd, shell=False, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         stdout, stderr = process.communicate()
-        if stderr.__contains__("warning") :
+        if stderr.__contains__("warning") or stderr.__contains__("error")  :
             warnings = "True"
             output = stderr
 
